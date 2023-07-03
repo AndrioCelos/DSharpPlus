@@ -167,7 +167,7 @@ namespace DSharpPlus.Entities
         /// </summary>
         /// <returns>String representation of this team member.</returns>
         public override string ToString()
-            => $"Team member: {this.User.Username}#{this.User.Discriminator} ({this.User.Id}), part of team {this.Team.Name} ({this.Team.Id})";
+            => $"Team member: {(this.User.Discriminator == "0" ? this.User.Username : $"{this.User.Username}#{this.User.Discriminator}")} ({this.User.Id}), part of team {this.Team.Name} ({this.Team.Id})";
 
         public static bool operator ==(DiscordTeamMember left, DiscordTeamMember right)
             => left?.Team?.Id == right?.Team?.Id && left?.User?.Id == right?.User?.Id;

@@ -36,6 +36,9 @@ namespace DSharpPlus.Net.Abstractions
         [JsonProperty("discriminator", NullValueHandling = NullValueHandling.Ignore)]
         internal string Discriminator { get; set; }
 
+        [JsonProperty(propertyName: "global_name", NullValueHandling = NullValueHandling.Ignore)]
+        public string GlobalName { get; internal set; }
+
         [JsonProperty("avatar", NullValueHandling = NullValueHandling.Ignore)]
         public string AvatarHash { get; internal set; }
 
@@ -76,6 +79,7 @@ namespace DSharpPlus.Net.Abstractions
             this.Id = other.Id;
             this.Username = other.Username;
             this.Discriminator = other.Discriminator;
+            this.GlobalName = other.GlobalName;
             this.AvatarHash = other.AvatarHash;
             this.BannerHash = other.BannerHash;
             this.BannerColor = other.BannerColor;

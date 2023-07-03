@@ -94,7 +94,7 @@ namespace DSharpPlus.Entities
         /// Gets this member's display name.
         /// </summary>
         [JsonIgnore]
-        public string DisplayName => this.Nickname ?? this.Username;
+        public string DisplayName => this.Nickname ?? this.GlobalName ?? this.Username;
 
         /// <summary>
         /// How long this member's communication will be suppressed for.
@@ -226,6 +226,16 @@ namespace DSharpPlus.Entities
         {
             get => this.User.Discriminator;
             internal set => this.User.Discriminator = value;
+        }
+
+        /// <summary>
+        /// Gets the member's global display name.
+        /// </summary>
+        [JsonIgnore]
+       public override string? GlobalName
+        {
+            get => this.User.GlobalName;
+            internal set => this.User.GlobalName = value;
         }
 
         /// <summary>
@@ -635,7 +645,7 @@ namespace DSharpPlus.Entities
         /// Returns a string representation of this member.
         /// </summary>
         /// <returns>String representation of this member.</returns>
-        public override string ToString() => $"Member {this.Id}; {this.Username}#{this.Discriminator} ({this.DisplayName})";
+        public override string ToString() => $"Member {this.Id}; {(this.Discriminator == "0" ? this.Username : $"{this.Username}#{this.Discriminator}")} ({this.DisplayName})";
 
         /// <summary>
         /// Checks whether this <see cref="DiscordMember"/> is equal to another object.

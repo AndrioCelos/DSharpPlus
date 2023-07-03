@@ -651,6 +651,7 @@ namespace DSharpPlus
 
             this.CurrentUser.Username = usr.Username;
             this.CurrentUser.Discriminator = usr.Discriminator;
+            this.CurrentUser.GlobalName = usr.GlobalName;
             this.CurrentUser.AvatarHash = usr.AvatarHash;
             return this.CurrentUser;
         }

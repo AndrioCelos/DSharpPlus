@@ -581,6 +581,7 @@ namespace DSharpPlus
             var rusr = ready.CurrentUser;
             this.CurrentUser.Username = rusr.Username;
             this.CurrentUser.Discriminator = rusr.Discriminator;
+            this.CurrentUser.GlobalName = rusr.GlobalName;
             this.CurrentUser.AvatarHash = rusr.AvatarHash;
             this.CurrentUser.MfaEnabled = rusr.MfaEnabled;
             this.CurrentUser.Verified = rusr.Verified;
@@ -2002,6 +2003,7 @@ namespace DSharpPlus
                 IsBot = this.CurrentUser.IsBot,
                 MfaEnabled = this.CurrentUser.MfaEnabled,
                 Username = this.CurrentUser.Username,
+                GlobalName = this.CurrentUser.GlobalName,
                 Verified = this.CurrentUser.Verified
             };
 
@@ -2012,6 +2014,7 @@ namespace DSharpPlus
             this.CurrentUser.IsBot = user.IsBot;
             this.CurrentUser.MfaEnabled = user.MfaEnabled;
             this.CurrentUser.Username = user.Username;
+            this.CurrentUser.GlobalName = user.GlobalName;
             this.CurrentUser.Verified = user.Verified;
 
             var ea = new UserUpdateEventArgs

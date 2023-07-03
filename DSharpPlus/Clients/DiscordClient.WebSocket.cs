@@ -109,6 +109,7 @@ namespace DSharpPlus
                         Id = this.CurrentUser.Id,
                         Username = this.CurrentUser.Username,
                         Discriminator = this.CurrentUser.Discriminator,
+                        GlobalName = this.CurrentUser.GlobalName,
                         AvatarHash = this.CurrentUser.AvatarHash
                     }
                 };

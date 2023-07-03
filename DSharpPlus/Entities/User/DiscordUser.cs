@@ -42,6 +42,7 @@ namespace DSharpPlus.Entities
             this.Id = transport.Id;
             this.Username = transport.Username;
             this.Discriminator = transport.Discriminator;
+            this.GlobalName = transport.GlobalName;
             this.AvatarHash = transport.AvatarHash;
             this._bannerColor = transport.BannerColor;
             this.BannerHash = transport.BannerHash;
@@ -70,6 +71,12 @@ namespace DSharpPlus.Entities
         [JsonIgnore]
         internal int DiscriminatorInt
             => int.Parse(this.Discriminator, NumberStyles.Integer, CultureInfo.InvariantCulture);
+
+        /// <summary>
+        /// Gets this user's global display name.
+        /// </summary>
+        [JsonProperty("global_name", NullValueHandling = NullValueHandling.Ignore)]
+        public virtual string? GlobalName { get; internal set; }
 
         /// <summary>
         /// Gets the user's banner color, if set. Mutually exclusive with <see cref="BannerHash"/>.
@@ -252,7 +259,7 @@ namespace DSharpPlus.Entities
         /// Returns a string representation of this user.
         /// </summary>
         /// <returns>String representation of this user.</returns>
-        public override string ToString() => $"User {this.Id}; {this.Username}#{this.Discriminator}";
+        public override string ToString() => $"User {this.Id}; {(this.Discriminator == "0" ? this.Username : $"{this.Username}#{this.Discriminator}")}";
 
         /// <summary>
         /// Checks whether this <see cref="DiscordUser"/> is equal to another object.
